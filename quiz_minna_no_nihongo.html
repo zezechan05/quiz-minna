@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Kosakata Minna no Nihongo Bab 1–6</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f0f0f5; padding: 20px; }
+    h1 { color: #2c3e50; }
+    .question { background: #fff; padding: 15px; margin: 10px 0; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .question p { margin: 0 0 10px; }
+    input[type="text"], select {
+      width: 100%; padding: 8px; margin-top: 5px;
+    }
+    button {
+      background-color: #3498db; color: white; padding: 10px 20px;
+      border: none; border-radius: 5px; font-size: 16px; cursor: pointer;
+    }
+    button:hover { background-color: #2980b9; }
+    #result { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+<h1>Quiz Kosakata Minna no Nihongo Bab 1–6 (30 Soal)</h1>
+<form id="quizForm">
+  <!-- Soal pilihan ganda -->
+  <div class="question"><p>1. Kata “がっこう (gakkou)” berarti...</p>
+    <select name="q1">
+      <option value="">--Pilih jawaban--</option>
+      <option value="b">Sekolah</option>
+      <option value="a">Rumah sakit</option>
+      <option value="c">Toko buku</option>
+      <option value="d">Kantor</option>
+    </select></div>
+  <div class="question"><p>2. Kata “せんせい (sensei)” berarti...</p>
+    <select name="q2"><option value="">--Pilih jawaban--</option>
+      <option value="a">Mahasiswa</option><option value="b">Guru</option>
+      <option value="c">Pegawai</option><option value="d">Sopir</option>
+    </select></div>
+  <div class="question"><p>3. Kata “ともだち (tomodachi)” berarti...</p>
+    <select name="q3"><option value="">--Pilih jawaban--</option>
+      <option value="a">Orang asing</option><option value="b">Saudara</option>
+      <option value="c">Teman</option><option value="d">Guru</option>
+    </select></div>
+  <div class="question"><p>4. Kata “でんしゃ (densha)” berarti...</p>
+    <select name="q4"><option value="">--Pilih jawaban--</option>
+      <option value="a">Mobil</option><option value="b">Sepeda</option>
+      <option value="c">Kereta</option><option value="d">Kapal</option>
+    </select></div>
+  <div class="question"><p>5. Kata “いえ / うち (ie / uchi)” berarti...</p>
+    <select name="q5"><option value="">--Pilih jawaban--</option>
+      <option value="a">Rumah</option><option value="b">Gedung</option>
+      <option value="c">Taman</option><option value="d">Kota</option>
+    </select></div>
+
+  <!-- Soal isian singkat -->
+  <div class="question"><p>6. Saya pergi ke ______ setiap pagi naik sepeda.</p><input type="text" name="q6"></div>
+  <div class="question"><p>7. Ayah saya bekerja di sebuah ______.</p><input type="text" name="q7"></div>
+  <div class="question"><p>8. Ini adalah buku ______ saya.</p><input type="text" name="q8"></div>
+  <div class="question"><p>9. Saya belajar bahasa Jepang di ______.</p><input type="text" name="q9"></div>
+  <div class="question"><p>10. Ibu saya memasak di ______.</p><input type="text" name="q10"></div>
+  <div class="question"><p>11. Kami menunggu di ______ kereta selama 10 menit.</p><input type="text" name="q11"></div>
+  <div class="question"><p>12. Di ruang kelas ada papan tulis dan ______.</p><input type="text" name="q12"></div>
+  <div class="question"><p>13. Kakak saya membeli komputer baru di ______.</p><input type="text" name="q13"></div>
+  <div class="question"><p>14. Saya menulis nama saya dengan ______.</p><input type="text" name="q14"></div>
+  <div class="question"><p>15. Mereka minum teh di ______.</p><input type="text" name="q15"></div>
+
+  <button type="submit">Kirim Jawaban</button>
+</form>
+<div id="result"></div>
+<script>
+  document.getElementById("quizForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const correct = {
+      q1: "b", q2: "b", q3: "c", q4: "c", q5: "a",
+      q6: "がっこう", q7: "かいしゃ", q8: "ともだち", q9: "にほんごがっこう", q10: "だいどころ",
+      q11: "えき", q12: "つくえ", q13: "みせ", q14: "ペン", q15: "きっさてん"
+    };
+    let score = 0;
+    for (let key in correct) {
+      const ans = document.querySelector(`[name="${key}"]`).value.trim();
+      if (ans === correct[key]) score++;
+    }
+    document.getElementById("result").innerText = `Skor Anda: ${score} dari ${Object.keys(correct).length}`;
+  });
+</script>
+</body>
+</html>
